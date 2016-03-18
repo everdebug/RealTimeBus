@@ -134,7 +134,6 @@ public class SplashActivity extends Activity {
                 handler.sendMessage(m);
                 Log.i(TAG, "send_0");
 
-
             }
         };
         t.start();
@@ -176,15 +175,12 @@ public class SplashActivity extends Activity {
                     transition();
                 }
                 Log.i(TAG, "stop Anim");
-
-
             }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
             }
         });
-
 
 //设置动画
         rl_splash.startAnimation(set);

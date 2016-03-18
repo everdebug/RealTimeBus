@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 /**
+ * 进行一些连接检测
+ *
  * Created by lenovo on 2016/3/18.
  */
 public class CheckUtils {
@@ -34,7 +36,6 @@ public class CheckUtils {
      * @return
      */
     public static boolean isWifiConnected(ConnectivityManager cm) {
-        //ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm != null) {
             NetworkInfo networkInfo = cm.getActiveNetworkInfo();
             if (networkInfo != null
@@ -44,24 +45,6 @@ public class CheckUtils {
         }
         return false;
     }
-
-    /*
-    * *
-     * 检测3G是否连接
-     *
-     * @return
-
-    private boolean is3gConnected() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm != null) {
-            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-            if (networkInfo != null
-                    && networkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-                return true;
-            }
-        }
-        return false;
-    }*/
 
     /**
      * 检测GPS是否打开
@@ -74,16 +57,9 @@ public class CheckUtils {
         if (lm.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)
                 || lm.isProviderEnabled(android.location.LocationManager.NETWORK_PROVIDER)
                 ) {
-            //Toast.makeText(this, "位置源已设置！", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "GPS打开！", Toast.LENGTH_SHORT).show();
             return true;
         }
-        /*
-        List<String> accessibleProviders = lm.getProviders(true);
-        for (String name : accessibleProviders) {
-            if ("gps".equals(name)) {
-
-            }
-        }*/
         return false;
     }
 }
