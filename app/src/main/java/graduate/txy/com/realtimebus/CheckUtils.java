@@ -1,11 +1,8 @@
 package graduate.txy.com.realtimebus;
 
-import android.content.Context;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-
-import java.util.List;
 
 /**
  * Created by lenovo on 2016/3/18.
@@ -69,16 +66,24 @@ public class CheckUtils {
     /**
      * 检测GPS是否打开
      *
-     *
      * @return
      */
     public static boolean isGpsEnabled(LocationManager lm) {
+
+
+        if (lm.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)
+                || lm.isProviderEnabled(android.location.LocationManager.NETWORK_PROVIDER)
+                ) {
+            //Toast.makeText(this, "位置源已设置！", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        /*
         List<String> accessibleProviders = lm.getProviders(true);
         for (String name : accessibleProviders) {
             if ("gps".equals(name)) {
-                return true;
+
             }
-        }
+        }*/
         return false;
     }
 }
