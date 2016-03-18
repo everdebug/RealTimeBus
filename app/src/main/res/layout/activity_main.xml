@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context="graduate.txy.com.realtimebus.MainActivity">
+
+    <TextView
+        android:textColor="@android:color/white"
+        android:id="@+id/tv_title"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.8"
+        android:text="title"
+        android:textSize="30sp"
+        android:background="#808080" />
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="7">
+
+    </FrameLayout>
+
+    <RadioGroup
+        android:layout_gravity="center"
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#808080"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:drawableTop="@drawable/select_bus"
+            android:id="@+id/rb_select_bus"
+            style="@style/tab_style"
+            android:text="实时查询" />
+
+        <RadioButton
+            android:id="@+id/rb_pass_bus"
+            style="@style/tab_style"
+            android:drawableTop="@drawable/passbus"
+            android:text="换乘查询" />
+
+        <RadioButton
+            android:drawableTop="@drawable/my_"
+            android:id="@+id/rb_my_bus"
+            style="@style/tab_style"
+            android:text="我" />
+
+    </RadioGroup>
+
+
+</LinearLayout>
