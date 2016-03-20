@@ -19,6 +19,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
+import graduate.txy.com.realtimebus.utils.CheckUtils;
 import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 
@@ -150,6 +151,7 @@ public class SplashActivity extends Activity {
                     SharePreferenceUtils.setSPValue(SplashActivity.this, "IS_CONNECT_WIFI", true);
                 }
 //延时跳转
+
                 long endTime = java.lang.System.currentTimeMillis();
                 long costTime = endTime - startTime;
                 if (costTime < 2000) {

@@ -1,6 +1,5 @@
 package graduate.txy.com.realtimebus.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ public class SelectFragment extends BaseFragment {
     public SelectFragment() {
         title = "实时查询";
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

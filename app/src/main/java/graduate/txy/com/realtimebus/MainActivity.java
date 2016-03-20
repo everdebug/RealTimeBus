@@ -27,27 +27,46 @@ public class MainActivity extends Activity {
         init();
     }
 
+
+    /**
+     *
+     * 初始化一些数据
+     */
     private void init() {
         tv_title = (TextView) findViewById(R.id.tv_title);
         mFManger = getFragmentManager();
         tabs = (RadioGroup) findViewById(R.id.rg_tab);
+
+
         tabs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 FragmentTransaction transaction = mFManger.beginTransaction();
-                mFragment = (BaseFragment)FragmentFactory.getInstanceByIndex(checkedId);
+                mFragment = (BaseFragment) FragmentFactory.getInstanceByIndex(checkedId);
                 tv_title.setText(mFragment.getTitle());
                 transaction.replace(R.id.fl_main, mFragment);
-                transaction.commit();
 
+                transaction.commit();
             }
         });
-
-
         tabs.getChildAt(0).performClick();
-
-
     }
 
 
+
+/*
+复用Fragment
+    public void switchContent(Fragment from, Fragment to) {
+        if (mContent != to) {
+            mContent = to;
+            FragmentTransaction transaction = mFragmentMan.beginTransaction().setCustomAnimations(
+                    android.R.anim.fade_in, R.anim.slide_out);
+            if (!to.isAdded()) {    // 先判断是否被add过
+                transaction.hide(from).add(R.id.content_frame, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+            }
+        }
+    }
+*/
 }

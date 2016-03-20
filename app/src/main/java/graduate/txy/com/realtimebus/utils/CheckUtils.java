@@ -1,4 +1,4 @@
-package graduate.txy.com.realtimebus;
+package graduate.txy.com.realtimebus.utils;
 
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -57,7 +57,6 @@ public class CheckUtils {
         if (lm.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)
                 || lm.isProviderEnabled(android.location.LocationManager.NETWORK_PROVIDER)
                 ) {
-            //Toast.makeText(this, "GPS打开！", Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;

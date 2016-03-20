@@ -12,26 +12,25 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="0.8"
+        android:layout_weight="0.6"
         android:text="title"
-        android:textSize="30sp"
-        android:background="#808080" />
+        android:textSize="20sp"
+        android:background="@android:color/black" />
 
     <FrameLayout
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="7">
-
+        android:layout_weight="9"
+        android:background="#cccccc">
     </FrameLayout>
 
     <RadioGroup
-        android:layout_gravity="center"
         android:id="@+id/rg_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#808080"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <RadioButton
             android:drawableTop="@drawable/select_bus"
@@ -52,6 +51,5 @@
             android:text="我" />
 
     </RadioGroup>
-
 
 </LinearLayout>
