@@ -4,5 +4,5 @@
     android:layout_height="match_parent"
     android:id="@+id/rl_splash"
     android:background="@drawable/splash_page"
-    tools:context=".SplashActivity">
+    tools:context=".activity.SplashActivity">
 </RelativeLayout>

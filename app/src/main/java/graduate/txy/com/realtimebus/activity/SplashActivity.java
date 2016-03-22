@@ -1,4 +1,4 @@
-package graduate.txy.com.realtimebus;
+package graduate.txy.com.realtimebus.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,6 +19,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
+import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.utils.CheckUtils;
 import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 

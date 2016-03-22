@@ -1,4 +1,4 @@
-package graduate.txy.com.realtimebus;
+package graduate.txy.com.realtimebus.activity;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.fragment.BaseFragment;
 import graduate.txy.com.realtimebus.fragment.FragmentFactory;
 

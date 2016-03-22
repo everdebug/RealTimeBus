@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context="graduate.txy.com.realtimebus.MainActivity">
+    tools:context=".activity.MainActivity">
 
     <TextView
         android:textColor="@android:color/white"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="9"
-        android:background="#cccccc">
+        android:background="#d9d9d9">
     </FrameLayout>
 
     <RadioGroup
