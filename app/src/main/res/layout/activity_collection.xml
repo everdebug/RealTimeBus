@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -18,7 +17,7 @@
             android:textColor="@android:color/white" />
 
         <TextView
-            android:id="@+id/tv_about_title"
+            android:id="@+id/tv_collection_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -28,8 +27,9 @@
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lv_my_about"
+        android:id="@+id/lv_my_collection"
         android:layout_width="match_parent"
         android:layout_height="0dip"
         android:layout_weight="8.5"></ListView>
+
 </LinearLayout>

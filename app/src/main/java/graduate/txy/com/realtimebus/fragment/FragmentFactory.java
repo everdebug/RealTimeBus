@@ -1,7 +1,6 @@
 package graduate.txy.com.realtimebus.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
 
 import graduate.txy.com.realtimebus.R;
 

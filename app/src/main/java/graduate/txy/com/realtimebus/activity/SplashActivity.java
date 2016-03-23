@@ -176,8 +176,10 @@ public class SplashActivity extends Activity {
         Log.i(TAG, "transition");
 //跳转页面放到handler中
         startActivity(new Intent(SplashActivity.this, MainActivity.class));
+
         Log.i(TAG, "欢迎界面结束，进入正式界面");
         finish();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 
 

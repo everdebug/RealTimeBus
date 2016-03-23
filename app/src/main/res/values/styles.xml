@@ -2,10 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="ThemeOverlay.AppCompat.Light">
-
-
+        <item name="android:windowIsTranslucent">true</item>
         <!-- Customize your theme here. -->
     </style>
+    <!--
+        <style name="Transparent" parent="android:Theme.Light">
+            -将Activity的Theme设置成透明-
+        <item name="android:windowIsTranslucent">true</item>
+    </style> -->
+
 
     <style name="SplashTheme" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
