@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PASS"
-        android:textSize="40sp"/>
-</LinearLayout>
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/et_start"
+        android:layout_alignStart="@+id/tv_end"
+        android:text="起点:"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_start"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="49dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_end"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/et_start"
+        android:layout_below="@+id/et_start"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/et_end"
+        android:layout_marginEnd="23dp"
+        android:layout_toStartOf="@+id/et_end"
+        android:text="终点:"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/bt_convert"
+        android:layout_width="50dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/bt_select"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/et_start"
+        android:layout_marginEnd="72dp"
+        android:text="转换" />
+
+    <Button
+        android:enabled="false"
+        android:id="@+id/bt_select"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_end"
+        android:layout_marginTop="35dp"
+        android:layout_toEndOf="@+id/tv_end"
+        android:text="查询" />
+</RelativeLayout>

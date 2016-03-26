@@ -21,6 +21,7 @@ public class CityActivty extends Activity {
         setContentView(R.layout.activity_city);
         tv = (TextView)findViewById(R.id.tv_city_title);
         tv.setText(getIntent().getStringExtra("name"));
+        //TODO 设置完城市写入到config中
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {// 按返回键时退出Activity的Activity特效动画

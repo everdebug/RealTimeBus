@@ -9,7 +9,7 @@ import android.app.Application;
  */
 
 public class MyApplication extends Application {
-    private static MyApplication instance;
+    private static MyApplication instance =null;
 
     @Override
     public void onCreate() {
