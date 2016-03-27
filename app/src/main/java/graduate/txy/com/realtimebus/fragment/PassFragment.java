@@ -186,12 +186,4 @@ public class PassFragment extends BaseFragment {
         mSearch.destroy();
         super.onDestroyView();
     }
-
-/*
-    protected void onDestroy() {
-        mSearch.destroy();
-        super.onDestroy();
-    }
-
-*/
 }

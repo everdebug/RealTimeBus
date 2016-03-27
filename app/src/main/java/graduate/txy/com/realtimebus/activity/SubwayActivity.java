@@ -22,7 +22,6 @@ public class SubwayActivity extends Activity {
         tv = (TextView)findViewById(R.id.tv_subway_title);
         tv.setText(getIntent().getStringExtra("name"));
         //TODO 从config中获取城市，如果城市存在地铁线路图，则进行相关显示，否则显示此城市没有地铁图
-
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {// 按返回键时退出Activity的Activity特效动画

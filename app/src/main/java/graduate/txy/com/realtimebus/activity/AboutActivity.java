@@ -75,11 +75,24 @@ public class AboutActivity extends Activity {
     }
 
 
+    //TODO 其它Activity也要添加
+    /**
+     * 摁键返回
+     * @param view
+     */
+    public void returnActivity(View view) {
+        backActivity();
+    }
+
+    private void backActivity() {
+        finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
     public boolean onKeyDown(int keyCode, KeyEvent event) {// 按返回键时退出Activity的Activity特效动画
 
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            finish();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            backActivity();
             return true;
         }
         return super.onKeyDown(keyCode, event);

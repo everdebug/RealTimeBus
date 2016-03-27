@@ -11,11 +11,17 @@
         android:background="@android:color/black">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:clickable="true"
+            android:onClick="returnActivity"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="我"
+            android:drawableLeft="@drawable/return_key2"
             android:textSize="18sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:drawablePadding="3dp"/>
 
         <TextView
             android:id="@+id/tv_about_title"
