@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -43,10 +44,21 @@ public class MyFragment extends BaseFragment {
         title = "我";
     }
 
+
+    private ImageButton ib;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-
+        ib = (ImageButton) mActivity.findViewById(R.id.ib_setting);
+        ib.setEnabled(true);
+        ib.setVisibility(View.VISIBLE);
+        ib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO 设置按钮
+                Log.i(TAG,"点击设置按钮");
+            }
+        });
         if (rootView == null) {
             Log.i(TAG, "创建View");
             rootView = inflater.inflate(R.layout.my_fragment, null);
@@ -108,5 +120,10 @@ public class MyFragment extends BaseFragment {
         return cs;
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ib.setVisibility(View.INVISIBLE);
+        ib.setEnabled(false);
+    }
 }

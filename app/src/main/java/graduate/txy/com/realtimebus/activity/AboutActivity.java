@@ -66,11 +66,12 @@ public class AboutActivity extends Activity {
         Log.i(TAG, "getData");
         ArrayList<Category> cs = new ArrayList<Category>();
         Category c1 = new Category("");
-        c1.addItems(c1.new CategoryItem("收藏线路", R.drawable.collection, CollectionActivity.class));
-        c1.addItems(c1.new CategoryItem("城市切", R.drawable.city, CityActivty.class));
-        c1.addItems(c1.new CategoryItem("城市换", R.drawable.city, CityActivty.class));
-        c1.addItems(c1.new CategoryItem("城切换", R.drawable.city, CityActivty.class));
+        //TODO 更换Activity
+        c1.addItems(c1.new CategoryItem("欢迎界面", R.drawable.welcome, CollectionActivity.class));
+        c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, CityActivty.class));
+        c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, CityActivty.class));
         cs.add(c1);
+
         return cs;
     }
 

@@ -11,17 +11,17 @@
         android:background="@android:color/black">
 
         <TextView
-            android:clickable="true"
-            android:onClick="returnActivity"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="我"
-            android:drawableLeft="@drawable/return_key2"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:drawablePadding="3dp"/>
+            android:clickable="true"
+            android:drawableLeft="@drawable/return_key"
+            android:drawablePadding="3dp"
+            android:onClick="returnActivity"
+            android:text="我"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_about_title"
@@ -37,5 +37,17 @@
         android:id="@+id/lv_my_about"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="8.5"></ListView>
+        android:layout_weight="4.5"></ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="4">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="      我是版本信息               ---版本号+版本图片"
+            android:textSize="40sp" />
+    </RelativeLayout>
 </LinearLayout>
