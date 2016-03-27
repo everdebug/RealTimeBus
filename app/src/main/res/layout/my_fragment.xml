@@ -4,10 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+
     <ListView
         android:id="@+id/lv_my"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ></ListView>
-
+    <TextView
+        android:textColor="@color/content_color"
+        android:layout_marginTop="92dp"
+        android:layout_marginLeft="250dp"
+        android:id="@+id/tv_city_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textSize="20sp"/>
 </RelativeLayout>

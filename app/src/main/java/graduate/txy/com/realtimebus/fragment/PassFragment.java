@@ -1,5 +1,6 @@
 package graduate.txy.com.realtimebus.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,13 +28,14 @@ import java.util.List;
 
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.globalApp.MyApplication;
+import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 /**
  * Created by lenovo on 2016/3/17.
  */
 public class PassFragment extends BaseFragment {
 
-
+public Activity mActivity;
     public PassFragment() {
         title = "换乘查询";
     }
@@ -43,7 +45,7 @@ public class PassFragment extends BaseFragment {
     private RoutePlanSearch mSearch = null;
     private OnGetRoutePlanResultListener listener = null;
     private List<TransitRouteLine> transitRouteLineList = null;
-
+    private String cityName =null;
     private EditText et_start;
     private EditText et_end;
     private Button bt_convert;
@@ -58,17 +60,16 @@ public class PassFragment extends BaseFragment {
         return view;
     }
 
-    /*
-        protected void onCreate(Bundle savedInstanceState) {
-                super.onCreate(savedInstanceState);
-            //SDKInitializer.initialize(getApplicationContext());
-            SDKInitializer.initialize(MyApplication.getInstance());
-            setContentView(R.layout.activity_my);
-            init();
-        }
-    */
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mActivity = getActivity();
+    }
+
     //初始化
     private void init() {
+        cityName = SharePreferenceUtils.getSPStringValue(mActivity,"city","北京");
         et_start = (EditText) view.findViewById(R.id.et_start);
         et_end = (EditText) view.findViewById(R.id.et_end);
         bt_convert = (Button) view.findViewById(R.id.bt_convert);
@@ -92,9 +93,8 @@ public class PassFragment extends BaseFragment {
             public void onClick(View v) {
                 String start = et_start.getText().toString().trim();
                 String end = et_end.getText().toString().trim();
-                Log.i(TAG, start + "--" + end);
-                //TODO 获取城市位置
-                selectRoute(start, end, "北京");
+                Log.i(TAG, start + "--" + end+"---"+cityName);
+                selectRoute(start, end, cityName);
 
 
             }

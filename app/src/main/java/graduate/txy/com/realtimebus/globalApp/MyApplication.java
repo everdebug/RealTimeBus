@@ -2,6 +2,8 @@ package graduate.txy.com.realtimebus.globalApp;
 
 import android.app.Application;
 
+import graduate.txy.com.realtimebus.db.DBManager;
+
 /**
  *
  * 全局Application
@@ -10,11 +12,15 @@ import android.app.Application;
 
 public class MyApplication extends Application {
     private static MyApplication instance =null;
-
+    private DBManager dbHelper =null;
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
+
+        //导入数据库
+        dbHelper = new DBManager(this);
+        dbHelper.openDatabase();
     }
 
     public static MyApplication getInstance() {

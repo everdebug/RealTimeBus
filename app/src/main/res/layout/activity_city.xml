@@ -6,16 +6,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.5"
+        android:layout_height="35dp"
         android:background="@android:color/black">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18sp"
-            android:textColor="@android:color/white" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:drawableLeft="@drawable/return_key"
+            android:drawablePadding="3dp"
+            android:onClick="returnActivity"
+            android:text="我"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_city_title"
@@ -27,9 +32,50 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_my_city"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="8.5"></ListView>
+
+    <graduate.txy.com.realtimebus.MyView.ClearEditText
+        android:id="@+id/filter_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/city_edit"
+        android:drawableLeft="@drawable/shape_rectangle_white"
+        android:gravity="center"
+        android:hint="请输入城市名称"
+        android:singleLine="true"
+        android:textSize="15.0dip" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ListView
+            android:id="@+id/country_lvcountry"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:divider="@color/listview_driver"
+            android:dividerHeight="1px" />
+
+        <TextView
+            android:id="@+id/dialog"
+            android:layout_width="80.0dip"
+            android:layout_height="80.0dip"
+            android:layout_gravity="center"
+            android:background="@color/green"
+            android:gravity="center"
+            android:textColor="#ffffffff"
+            android:textSize="30.0dip"
+            android:visibility="invisible" />
+
+        <graduate.txy.com.realtimebus.MyView.SideBar
+            android:id="@+id/sidrbar"
+            android:layout_width="30.0dip"
+            android:layout_height="fill_parent"
+            android:layout_gravity="right|center" />
+    </FrameLayout>
+
 </LinearLayout>

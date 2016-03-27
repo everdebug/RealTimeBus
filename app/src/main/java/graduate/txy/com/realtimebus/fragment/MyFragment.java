@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ import graduate.txy.com.realtimebus.activity.SubwayActivity;
 import graduate.txy.com.realtimebus.adapter.CategoryAdapter;
 import graduate.txy.com.realtimebus.domain.Category;
 import graduate.txy.com.realtimebus.globalApp.MyApplication;
+import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 /**
  * MyFragment
@@ -46,9 +48,11 @@ public class MyFragment extends BaseFragment {
 
 
     private ImageButton ib;
+    private TextView tv_city_name;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         ib = (ImageButton) mActivity.findViewById(R.id.ib_setting);
         ib.setEnabled(true);
         ib.setVisibility(View.VISIBLE);
@@ -56,7 +60,7 @@ public class MyFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 //TODO 设置按钮
-                Log.i(TAG,"点击设置按钮");
+                Log.i(TAG, "点击设置按钮");
             }
         });
         if (rootView == null) {
@@ -70,12 +74,23 @@ public class MyFragment extends BaseFragment {
         }
         Log.i(TAG, "oncreateview");
         init(rootView);
+
+        tv_city_name.setText(SharePreferenceUtils.getSPStringValue(mActivity, "city", "北京"));
         return rootView;
 
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tv_city_name.setText(SharePreferenceUtils.getSPStringValue(mActivity, "city", "北京"));
+    }
+
     private void init(View view) {
         Log.i(TAG, "init");
+
+        tv_city_name = (TextView) view.findViewById(R.id.tv_city_name);
         lv_my = (ListView) view.findViewById(R.id.lv_my);
         categories = getData();
         categoryAdapter = new CategoryAdapter(view.getContext(), categories);

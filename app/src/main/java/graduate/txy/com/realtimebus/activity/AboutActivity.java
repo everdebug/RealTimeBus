@@ -67,9 +67,9 @@ public class AboutActivity extends Activity {
         ArrayList<Category> cs = new ArrayList<Category>();
         Category c1 = new Category("");
         //TODO 更换Activity
-        c1.addItems(c1.new CategoryItem("欢迎界面", R.drawable.welcome, CollectionActivity.class));
-        c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, CityActivty.class));
-        c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, CityActivty.class));
+        c1.addItems(c1.new CategoryItem("欢迎界面", R.drawable.welcome, WelcomeActivity.class));
+        c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, WelcomeActivity.class));
+        c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, WelcomeActivity.class));
         cs.add(c1);
 
         return cs;

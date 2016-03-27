@@ -4,12 +4,15 @@
     <color name="title_background">#300000</color>
     <color name="content_background">#D0D0D0</color>
     <color name="content_color">#000000</color>
+
     <color name="selector_background">#DAA520</color>
-
-
-
-
-
-
     <color name="item_select">#cccccc</color>
+    <color name="item_city_select">#c2c2c2</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="listview_driver">#eeeeee</color>
+    <color name="green">#e581ff02</color>
+    <color name="bg">#4d4d4d</color>
 </resources>
