@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:drawableLeft="@drawable/point_sb"
             android:drawablePadding="5dp"
             android:hint="请输入起点"
@@ -41,14 +41,25 @@
             android:layout_marginRight="40dp"
             android:text="转换" />
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/bt_convert"
+            android:layout_alignEnd="@+id/bt_convert"
+            android:layout_alignStart="@+id/et_end">
+
+        </Spinner>
+
         <Button
             android:id="@+id/bt_select"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/bt_convert"
-            android:layout_alignStart="@+id/et_end"
-            android:layout_below="@+id/et_end"
-            android:text="查询" />
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="查询"
+            android:layout_below="@+id/spinner"
+            android:layout_alignEnd="@+id/spinner"
+            android:layout_alignStart="@+id/spinner" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -59,15 +70,14 @@
             android:id="@+id/lv_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp">
-        </ListView>
+            android:layout_marginTop="20dp"></ListView>
 
         <TextView
             android:id="@+id/tv_pass_info"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="此处显示查询结果"/>
+            android:layout_centerInParent="true"
+            android:text="此处显示查询结果"
+            android:textSize="20sp" />
     </RelativeLayout>
 </LinearLayout>
