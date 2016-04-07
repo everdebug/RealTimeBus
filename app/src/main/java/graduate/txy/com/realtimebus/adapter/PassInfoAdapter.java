@@ -50,7 +50,6 @@ public class PassInfoAdapter extends MyBaseAdapter<PassInfo, View> {
             view1.setTag(viewHolder);
         }
 
-        //Log.i(TAG, (list.get(position)).getRouteName());
         viewHolder.tv_pass_title.setText((list.get(position)).getRouteName());
         viewHolder.tv_pass_time.setText("约"+String.format("%.2f", (list.get(position)).getTotalTime() / 60) + "分钟");
         viewHolder.tv_pass_length.setText((list.get(position)).getTotalLength() / 1000 + "公里");

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="3">
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.baidu.mapapi.map.MapView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.05">
+
+        <TextView
+            android:id="@+id/tv_dialog_route_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="name"
+            android:textSize="15dip" />
+
+        <TextView
+            android:id="@+id/tv_dialog_walk_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="length"
+            android:textSize="15dip" />
+
+
+        <ImageButton
+
+            android:id="@+id/ib_collection"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_logo" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv_pass_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1.5">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.08"
+        android:gravity="center"
+        android:text="返回"
+        android:textColor="#000"
+        android:textSize="20sp" />
+</LinearLayout>

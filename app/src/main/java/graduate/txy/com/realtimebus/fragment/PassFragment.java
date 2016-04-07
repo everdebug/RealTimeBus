@@ -1,11 +1,13 @@
 package graduate.txy.com.realtimebus.fragment;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -29,6 +31,7 @@ import com.baidu.mapapi.search.route.WalkingRouteResult;
 import java.util.ArrayList;
 import java.util.List;
 
+import graduate.txy.com.realtimebus.MyView.PassRouteDialog;
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.adapter.PassInfoAdapter;
 import graduate.txy.com.realtimebus.domain.PassInfo;
@@ -61,6 +64,8 @@ public class PassFragment extends BaseFragment {
     private TextView tv_pass_info;
     private ListView lv_pass_info;
     private PassInfoAdapter pia;
+    private AlertDialog.Builder builder;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         SDKInitializer.initialize(MyApplication.getInstance());
@@ -87,7 +92,17 @@ public class PassFragment extends BaseFragment {
         lv_pass_info = (ListView) view.findViewById(R.id.lv_pass);
         pia = new PassInfoAdapter(mActivity, passInfoList);
         lv_pass_info.setAdapter(pia);
-        Log.i(TAG,pia.getCount()+"");
+
+        lv_pass_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                PassInfo tempInfo = passInfoList.get(position);
+                Log.i(TAG, tempInfo.toString());
+                showDialog(tempInfo);
+            }
+        });
+
+        Log.i(TAG, pia.getCount() + "");
         bt_convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +123,6 @@ public class PassFragment extends BaseFragment {
                 Log.i(TAG, start + "--" + end + "---" + cityName);
                 selectRoute(start, end, cityName);
 
-
             }
         });
 
@@ -120,6 +134,13 @@ public class PassFragment extends BaseFragment {
 
 
     }
+
+
+    private void showDialog(PassInfo passInfo) {
+        PassRouteDialog dialog = new PassRouteDialog(mActivity,passInfo);
+        dialog.show();
+    }
+
 
     /**
      * 查询公交换乘
@@ -186,14 +207,19 @@ public class PassFragment extends BaseFragment {
                                 routeName.append(vi.getTitle());
                                 routeName.append("|");
                             }
+                            //Log.i(TAG,""+ts.getDistance());
+                            itemInfo.setItemLength(ts.getDistance());
                             itemInfo.setPassMethod(ts.getInstructions());
                             itemInfo.setTransport((ts.getStepType()).toString());
                             itemInfoList.add(itemInfo);
                         }
+
+
                         routeName.deleteCharAt(routeName.length() - 1);
                         info.setTotalStationNum(num);
                         info.setPassItemInfoList(itemInfoList);
                         info.setRouteName(routeName.toString());
+                        info.setResult(result);
                         passInfoList.add(info);
                     }
 
@@ -204,10 +230,7 @@ public class PassFragment extends BaseFragment {
                     }
 
                     pia.notifyDataSetChanged();
-                    Log.i(TAG,pia.getCount()+"");
-                    //notifyDataSetChanged();
-                    //pia.updateListView(passInfoList);
-
+                    Log.i(TAG, pia.getCount() + "");
                 }
             }
 

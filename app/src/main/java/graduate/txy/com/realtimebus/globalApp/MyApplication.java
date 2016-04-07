@@ -2,6 +2,8 @@ package graduate.txy.com.realtimebus.globalApp;
 
 import android.app.Application;
 
+import com.baidu.mapapi.SDKInitializer;
+
 import graduate.txy.com.realtimebus.db.DBManager;
 
 /**
@@ -16,6 +18,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SDKInitializer.initialize(this);
         instance = this;
 
         //导入数据库

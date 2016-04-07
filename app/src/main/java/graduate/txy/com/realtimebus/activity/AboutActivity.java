@@ -58,9 +58,12 @@ public class AboutActivity extends Activity {
                 intent.putExtra("name", name);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
     }
+
+
 
     private ArrayList<Category> getData() {
         Log.i(TAG, "getData");
@@ -77,8 +80,10 @@ public class AboutActivity extends Activity {
 
 
     //TODO 其它Activity也要添加
+
     /**
      * 摁键返回
+     *
      * @param view
      */
     public void returnActivity(View view) {

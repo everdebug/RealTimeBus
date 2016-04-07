@@ -1,5 +1,7 @@
 package graduate.txy.com.realtimebus.domain;
 
+import com.baidu.mapapi.search.route.TransitRouteResult;
+
 import java.util.List;
 
 /**
@@ -12,12 +14,21 @@ public class PassInfo {
     String routeName;
     int totalStationNum;
     List<PassItemInfo> passItemInfoList;
+    TransitRouteResult result;//用于显示路线
 
     public class PassItemInfo {
+        int itemLength;
         String transport;
         String passMethod;
         int stationNum;
 
+        public int getItemLength() {
+            return itemLength;
+        }
+
+        public void setItemLength(int itemLength) {
+            this.itemLength = itemLength;
+        }
 
         public void setPassMethod(String passMethod) {
             this.passMethod = passMethod;
@@ -46,11 +57,21 @@ public class PassInfo {
         @Override
         public String toString() {
             return "PassItemInfo{" +
-                    "passMethod='" + passMethod + '\'' +
-                    ", transport=" + transport +
+                    "itemLength=" + itemLength +
+                    ", transport='" + transport + '\'' +
+                    ", passMethod='" + passMethod + '\'' +
                     ", stationNum=" + stationNum +
                     '}';
         }
+    }
+
+
+    public TransitRouteResult getResult() {
+        return result;
+    }
+
+    public void setResult(TransitRouteResult result) {
+        this.result = result;
     }
 
     public int getTotalStationNum() {

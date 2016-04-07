@@ -15,6 +15,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
+            android:text="清河南镇"
             android:drawableLeft="@drawable/point_sb"
             android:drawablePadding="5dp"
             android:hint="请输入起点"
@@ -22,6 +23,7 @@
 
         <EditText
             android:id="@+id/et_end"
+            android:text="北京站"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/et_start"
