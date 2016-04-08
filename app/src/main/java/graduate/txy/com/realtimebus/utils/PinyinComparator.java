@@ -5,6 +5,9 @@ import java.util.Comparator;
 
 import graduate.txy.com.realtimebus.domain.SortModel;
 
+/**
+ *  拼音比较器
+ */
 public class PinyinComparator implements Comparator<SortModel>
 {
 

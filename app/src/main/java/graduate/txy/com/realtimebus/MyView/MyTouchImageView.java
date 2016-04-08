@@ -17,6 +17,11 @@ import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 
+/**
+ * 自定义控件
+ * MyTouchImageView
+ * ImageView添加一些缩放，移动，多点控制的功能
+ */
 public class MyTouchImageView extends ImageView implements OnGlobalLayoutListener,
         OnScaleGestureListener, OnTouchListener {
     private boolean mOnce = false;//是否执行了一次

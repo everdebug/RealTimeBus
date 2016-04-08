@@ -16,7 +16,10 @@ import android.widget.TextView;
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.utils.DensityUtil;
 
-
+/**
+ * 侧边导航栏栏
+ *
+ */
 public class SideBar extends View {
 	// 触摸事件
 	private OnTouchingLetterChangedListener onTouchingLetterChangedListener;

@@ -33,6 +33,7 @@ public class SplashActivity extends Activity {
 
     private static final String TAG = "SplashActivity";
 
+    //check类型
     private static final int NEXT_ACTIVITY = 0;
     private static final int NO_NET = 1;
     private static final int NO_GPS = 2;
@@ -48,6 +49,7 @@ public class SplashActivity extends Activity {
     private LocationManager lm;
 
 
+    //接收各种check返回的类型，并进行相应处理
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -71,7 +73,6 @@ public class SplashActivity extends Activity {
             super.handleMessage(msg);
         }
     };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +109,6 @@ public class SplashActivity extends Activity {
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         Log.i(TAG, "init_finish");
-
 
     }
 
@@ -236,7 +236,6 @@ public class SplashActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 Log.i(TAG, "stop Anim");
-
             }
 
             @Override

@@ -17,7 +17,7 @@ import graduate.txy.com.realtimebus.domain.SortModel;
 
 /**
  * 索引适配器
- *
+ * 来源：网络
  */
 public class SortAdapter extends BaseAdapter implements SectionIndexer{
 	private List<SortModel> list = null;

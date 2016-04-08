@@ -1,19 +1,22 @@
 package graduate.txy.com.realtimebus.db;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
+import android.util.Log;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
-import android.util.Log;
-
 import graduate.txy.com.realtimebus.R;
 
-
+/**
+ * 数据库管理
+ *
+ */
 public class DBManager {
     private final int BUFFER_SIZE = 400000;
     public static final String DB_NAME = "regions.db"; //保存的数据库文件名
@@ -33,6 +36,11 @@ public class DBManager {
         this.database = this.openDatabase(DB_PATH + "/" + DB_NAME);
     }
 
+    /**
+     * 打开数据库
+     * @param dbfile 数据库文件PATH
+     * @return
+     */
     private SQLiteDatabase openDatabase(String dbfile) {
         try {
             if (!(new File(dbfile).exists())) {//判断数据库文件是否存在，若不存在则执行导入，否则直接打开数据库
@@ -60,6 +68,9 @@ public class DBManager {
         return null;
     }
 
+    /**
+     * 关闭数据库
+     */
     public void closeDatabase() {
         this.database.close();
     }

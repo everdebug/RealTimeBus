@@ -10,10 +10,13 @@ import java.util.List;
 
 import graduate.txy.com.realtimebus.domain.RegionInfo;
 
-
+/**
+ *	地区的数据库操作
+ */
 public class RegionDAO {
-	
+	//获取省份/城市信息列表
 	public static List<RegionInfo> getProvencesOrCityOnId(int id){
+		//打开数据库
 		SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/" + DBManager.DB_NAME, null);
 		List<RegionInfo> regionInfos = new ArrayList<RegionInfo>();//String.valueOf(type)
 		Cursor cursor = db.rawQuery("select * from REGIONS where _id="+id,null);
@@ -40,11 +43,10 @@ public class RegionDAO {
 
 	/**
 	 *	得到省份信息
-	 *
 	 * @param type 0国家 1省 2市 3县
 	 * @return 地区信息列表
 	 */
-	public static List<RegionInfo> getProvencesOrCity(int type){
+	public static List<RegionInfo> getProvincesOrCity(int type){
 		SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/" + DBManager.DB_NAME, null);
 		List<RegionInfo> regionInfos = new ArrayList<RegionInfo>();//String.valueOf(type)
 		Cursor cursor = db.rawQuery("select * from REGIONS where type="+type,null);
@@ -70,12 +72,11 @@ public class RegionDAO {
 	}
 
 	/**
-	 *
-	 *
-	 * @param parent
-	 * @return
+	 * 根据parent 得到省份或者城市的值
+	 * @param parent 要选择的parent的int 类型值
+	 * @return 返回城市列表
 	 */
-	public static List<RegionInfo> getProvencesOrCityOnParent(int parent){
+	public static List<RegionInfo> getProvincesOrCityOnParent(int parent){
 		SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DBManager.DB_PATH + "/" + DBManager.DB_NAME, null);
 		List<RegionInfo> regionInfos = new ArrayList<RegionInfo>();//String.valueOf(type)
 		Cursor cursor = db.rawQuery("select * from REGIONS where parent="+parent,null);
@@ -129,8 +130,8 @@ public class RegionDAO {
 			regionInfo.setParent(parent);
 			regionInfo.setName(name);
 			regionInfo.setType(type);
-			
-			
+
+
 			/*kcontent = cursor.getString(cursor
 					.getColumnIndex("remarkcontent"));
 			String issettingremind = cursor.getString(cursor
@@ -167,8 +168,8 @@ public class RegionDAO {
 			remind.setRemarkcontent(remarkcontent);
 			remind.setIssettingremind(issettingremind);
 			remind.setIsdaoqi(isdaoqi);*/
-			
-			
+
+
 			regionInfos.add(regionInfo);
 		}
 		cursor.close();

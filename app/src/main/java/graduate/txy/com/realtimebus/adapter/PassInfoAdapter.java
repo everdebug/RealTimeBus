@@ -1,7 +1,6 @@
 package graduate.txy.com.realtimebus.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -40,7 +39,6 @@ public class PassInfoAdapter extends MyBaseAdapter<PassInfo, View> {
             viewHolder = (ViewHolder) view1.getTag();
 
         } else {
-            //Log.i(TAG,"创建，调用？");
             viewHolder = new ViewHolder();
             view1 = View.inflate(context, R.layout.item_pass, null);
             viewHolder.tv_pass_title = (TextView) view1.findViewById(R.id.tv_pass_title);

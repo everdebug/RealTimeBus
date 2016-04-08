@@ -20,7 +20,7 @@ import graduate.txy.com.realtimebus.globalApp.MyApplication;
 
 /**
  * AboutActivity页面的显示
- * <p/>
+ *
  * Created by lenovo on 2016/3/20.
  */
 public class AboutActivity extends Activity {
@@ -40,6 +40,7 @@ public class AboutActivity extends Activity {
         init();
     }
 
+    //初始化
     private void init() {
         tv_title = (TextView) findViewById(R.id.tv_about_title);
         tv_title.setText(getIntent().getStringExtra("name"));
@@ -47,6 +48,7 @@ public class AboutActivity extends Activity {
         mCategories = getData();
         mCategoryAdapter = new CategoryAdapter(AboutActivity.this, mCategories);
         lv_my_about.setAdapter(mCategoryAdapter);
+        //点击跳转
         lv_my_about.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,14 +59,14 @@ public class AboutActivity extends Activity {
                 Intent intent = new Intent(MyApplication.getInstance(), item.getClasz());
                 intent.putExtra("name", name);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
+                //跳转动画
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
 
-
-
+    //获取数据
     private ArrayList<Category> getData() {
         Log.i(TAG, "getData");
         ArrayList<Category> cs = new ArrayList<Category>();
@@ -74,7 +76,6 @@ public class AboutActivity extends Activity {
         c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, WelcomeActivity.class));
         c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, WelcomeActivity.class));
         cs.add(c1);
-
         return cs;
     }
 
@@ -90,6 +91,7 @@ public class AboutActivity extends Activity {
         backActivity();
     }
 
+    //返回finish和设置跳转动画
     private void backActivity() {
         finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);

@@ -15,7 +15,11 @@ import android.widget.EditText;
 
 import graduate.txy.com.realtimebus.R;
 
-
+/**
+ * 自定义控件
+ * ClearEditText
+ * 带有清空按钮的EditText
+ */
 public class ClearEditText extends EditText implements OnFocusChangeListener, TextWatcher {
     /**
      * 删除按钮的引用

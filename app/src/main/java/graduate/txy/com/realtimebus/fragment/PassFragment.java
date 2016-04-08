@@ -39,6 +39,7 @@ import graduate.txy.com.realtimebus.globalApp.MyApplication;
 import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 /**
+ * 换乘Fragment
  * Created by lenovo on 2016/3/17.
  */
 public class PassFragment extends BaseFragment {
@@ -51,9 +52,9 @@ public class PassFragment extends BaseFragment {
 
     private static final String TAG = "MyMapActivity";
 
-    private RoutePlanSearch mSearch = null;
-    private OnGetRoutePlanResultListener listener = null;
-    private List<TransitRouteLine> transitRouteLineList = null;
+    private RoutePlanSearch mSearch = null;//路线搜索
+    private OnGetRoutePlanResultListener listener = null;//查询结果监听器
+    private List<TransitRouteLine> transitRouteLineList = null;//换乘公交列表
     private List<PassInfo> passInfoList = new ArrayList<PassInfo>();
     private String cityName = null;
     private EditText et_start;
@@ -68,7 +69,7 @@ public class PassFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        SDKInitializer.initialize(MyApplication.getInstance());
+        SDKInitializer.initialize(MyApplication.getInstance());//注册SDK
         view = inflater.inflate(R.layout.pass_fragment, container, false);
         init();
         return view;
@@ -93,6 +94,7 @@ public class PassFragment extends BaseFragment {
         pia = new PassInfoAdapter(mActivity, passInfoList);
         lv_pass_info.setAdapter(pia);
 
+        //点击相应的换成方案回显示相应的详情
         lv_pass_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -102,7 +104,8 @@ public class PassFragment extends BaseFragment {
             }
         });
 
-        Log.i(TAG, pia.getCount() + "");
+        //Log.i(TAG, pia.getCount() + "");
+        //转换按钮
         bt_convert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +118,7 @@ public class PassFragment extends BaseFragment {
 
             }
         });
+        //查询按钮
         bt_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,7 +138,6 @@ public class PassFragment extends BaseFragment {
 
 
     }
-
 
     private void showDialog(PassInfo passInfo) {
         PassRouteDialog dialog = new PassRouteDialog(mActivity,passInfo);
@@ -162,6 +165,7 @@ public class PassFragment extends BaseFragment {
         tv_pass_info.setVisibility(View.INVISIBLE);
     }
 
+    //初始化监听器，将获取的数据保存起来
     public void initListener() {
         Log.i(TAG, "initListener");
         listener = new OnGetRoutePlanResultListener() {

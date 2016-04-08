@@ -21,9 +21,6 @@ public class CollectionActivity extends Activity{
         tv = (TextView)findViewById(R.id.tv_collection_title);
         tv.setText(getIntent().getStringExtra("name"));
 
-
-
-
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {// 按返回键时退出Activity的Activity特效动画

@@ -2,10 +2,13 @@ package graduate.txy.com.realtimebus.MyView;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.GridView;
 
-
+/**
+ * 自定义控件
+ * MyGridView
+ * 重置了一些grid之间的规范
+ */
 public class MyGridView extends GridView {
     public MyGridView(Context context, AttributeSet attrs) {
         super(context, attrs);

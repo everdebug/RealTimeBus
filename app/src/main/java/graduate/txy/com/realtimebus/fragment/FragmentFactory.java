@@ -5,6 +5,7 @@ import android.app.Fragment;
 import graduate.txy.com.realtimebus.R;
 
 /**
+ * Fragment工厂类  用于选择fragment
  * Created by lenovo on 2016/3/17.
  */
 public class FragmentFactory extends Fragment {

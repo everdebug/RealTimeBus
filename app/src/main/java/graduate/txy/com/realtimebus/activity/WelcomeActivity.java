@@ -7,6 +7,7 @@ import android.view.Window;
 import graduate.txy.com.realtimebus.R;
 
 /**
+ * 欢迎界面
  * Created by lenovo on 2016/3/27.
  */
 public class WelcomeActivity extends Activity {

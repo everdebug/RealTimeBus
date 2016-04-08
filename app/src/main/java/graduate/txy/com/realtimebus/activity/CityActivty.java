@@ -2,7 +2,6 @@ package graduate.txy.com.realtimebus.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -51,7 +50,7 @@ public class CityActivty extends Activity {
     private List<RegionInfo> citysList;//城市列表
     private List<String> provinces;//地方名称
     private ListView sortListView;//显示列表
-    private SideBar sideBar;
+    private SideBar sideBar;//侧边sideBar
     private TextView dialog;
     private SortAdapter adapter;
     private ClearEditText mClearEditText;
@@ -76,22 +75,25 @@ public class CityActivty extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//无title
+        //不显示键盘
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.activity_city);
+        //设置标题
         tv = (TextView) findViewById(R.id.tv_city_title);
         tv.setText(getIntent().getStringExtra("name"));
 
         initData();
-        initViews();
+        initView();
     }
 
     private void initData() {
-        provinceList = RegionDAO.getProvencesOrCity(1);//列表中加入省份信息
-        provinceList.addAll(RegionDAO.getProvencesOrCity(2));//加入市的信息
+        provinceList = RegionDAO.getProvincesOrCity(1);//列表中加入省份信息
+        provinceList.addAll(RegionDAO.getProvincesOrCity(2));//加入市的信息
 
         citysList = new ArrayList<RegionInfo>();
         mHotCitys = new ArrayList<RegionInfo>();
         provinces = new ArrayList<String>();
+        //添加
         for (RegionInfo info : provinceList) {
             provinces.add(info.getName().trim());
         }
@@ -101,8 +103,10 @@ public class CityActivty extends Activity {
         mHotCitys.add(new RegionInfo(76, 6, "广州"));
     }
 
-    private void initViews() {
+    private void initView() {
+        //list header
         View view = View.inflate(this, R.layout.head_city_list, null);
+
         mGridView = (GridView) view.findViewById(R.id.id_gv_remen);
         gvAdapter = new MyGridViewAdapter(this, mHotCitys);
         mGridView.setAdapter(gvAdapter);
@@ -141,19 +145,12 @@ public class CityActivty extends Activity {
                 SharePreferenceUtils.setSPStringValue(CityActivty.this, "city", name);
                 Log.i(TAG, "选中城市 ：" + name);
                 backActivity();
-                //返回显示
-                /*
-                Intent data = new Intent();
-                data.putExtra("cityName", name);
-                setResult(1110, data);
-            */
             }
         });
         SourceDateList = filledData(provinceList);
 
         // 根据a-z进行排序源数据
         Collections.sort(SourceDateList, pinyinComparator);
-
 
         adapter = new SortAdapter(this, SourceDateList);
         sortListView.setAdapter(adapter);
@@ -187,11 +184,6 @@ public class CityActivty extends Activity {
                 SharePreferenceUtils.setSPStringValue(CityActivty.this, "city", cityName);
                 Log.i(TAG, "选中城市 ：" + cityName);
                 backActivity();
-                //返回显示
-                /*
-                Intent data = new Intent();
-                data.putExtra("cityName", cityName);
-                setResult(1110, data);*/
             }
         });
 
@@ -250,7 +242,7 @@ public class CityActivty extends Activity {
                 for (int i = 0; i < provinceList.size(); i++) {
                     String name = provinceList.get(i).getName();
                     if (name.equals(filterStr)) {
-                        filterDateList.addAll(filledData(RegionDAO.getProvencesOrCityOnParent(provinceList.get(i).getId())));
+                        filterDateList.addAll(filledData(RegionDAO.getProvincesOrCityOnParent(provinceList.get(i).getId())));
                     }
                 }
             }
@@ -261,6 +253,9 @@ public class CityActivty extends Activity {
         adapter.updateListView(filterDateList);
     }
 
+    /**
+     * 热门城市适配器
+     */
     private class MyGridViewAdapter extends MyBaseAdapter<RegionInfo, GridView> {
         private LayoutInflater inflater;
 

@@ -25,6 +25,8 @@ import static com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
  * <p>
  * 复写{@link #onMarkerClick(Marker)} 处理Marker点击事件
  * </p>
+ *
+ * 来自百度地图Demo
  */
 public abstract class OverlayManager implements OnMarkerClickListener, OnPolylineClickListener {
 
