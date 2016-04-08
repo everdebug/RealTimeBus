@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,16 +30,20 @@ import com.baidu.mapapi.search.route.TransitRouteLine;
 import com.baidu.mapapi.search.route.TransitRoutePlanOption;
 import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
+import com.lidroid.xutils.DbUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import graduate.txy.com.realtimebus.MyView.PassRouteDialog;
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.adapter.PassInfoAdapter;
 import graduate.txy.com.realtimebus.domain.PassInfo;
 import graduate.txy.com.realtimebus.globalApp.MyApplication;
+import graduate.txy.com.realtimebus.utils.DBUtils;
 import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
+import graduate.txy.com.realtimebus.utils.XutilsDataBaseUtils;
 
 /**
  * 换乘Fragment
@@ -51,12 +58,20 @@ public class PassFragment extends BaseFragment {
     }
 
     private static final String TAG = "MyMapActivity";
+    private String[] spinners = {"不含地铁", "时间优先", "最少换乘", "最少步行距离"};//换乘方式
 
     private RoutePlanSearch mSearch = null;//路线搜索
     private OnGetRoutePlanResultListener listener = null;//查询结果监听器
     private List<TransitRouteLine> transitRouteLineList = null;//换乘公交列表
     private List<PassInfo> passInfoList = new ArrayList<PassInfo>();
     private String cityName = null;
+    private TransitRoutePlanOption.TransitPolicy policy;
+    private DbUtils mDB;
+    private String startS;
+    private String endS;
+    private PassInfoAdapter pia;
+    private AlertDialog.Builder builder;
+
     private EditText et_start;
     private EditText et_end;
     private Button bt_convert;
@@ -64,8 +79,9 @@ public class PassFragment extends BaseFragment {
     private View view;
     private TextView tv_pass_info;
     private ListView lv_pass_info;
-    private PassInfoAdapter pia;
-    private AlertDialog.Builder builder;
+    private Spinner spinner;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,8 +107,41 @@ public class PassFragment extends BaseFragment {
         bt_select = (Button) view.findViewById(R.id.bt_select);
         tv_pass_info = (TextView) view.findViewById(R.id.tv_pass_info);
         lv_pass_info = (ListView) view.findViewById(R.id.lv_pass);
+        spinner = (Spinner) view.findViewById(R.id.spinner);
+        //初始化数据库和加载数据库
+        mDB = XutilsDataBaseUtils.createDB(mActivity);
+
+        //相关适配器的添加
         pia = new PassInfoAdapter(mActivity, passInfoList);
         lv_pass_info.setAdapter(pia);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mActivity, R.layout.simple_spinner_item, spinners);
+        spinner.setAdapter(adapter);
+        //换乘方式的选择
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.i(TAG, spinners[position]);
+                switch (position) {
+                    case 0:
+                        policy = TransitRoutePlanOption.TransitPolicy.EBUS_NO_SUBWAY;
+                        break;
+                    case 1:
+                        policy = TransitRoutePlanOption.TransitPolicy.EBUS_TIME_FIRST;
+                        break;
+                    case 2:
+                        policy = TransitRoutePlanOption.TransitPolicy.EBUS_TRANSFER_FIRST;
+                        break;
+                    case 3:
+                        policy = TransitRoutePlanOption.TransitPolicy.EBUS_WALK_FIRST;
+                        break;
+                    default:
+                        policy = TransitRoutePlanOption.TransitPolicy.EBUS_WALK_FIRST;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         //点击相应的换成方案回显示相应的详情
         lv_pass_info.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -110,10 +159,10 @@ public class PassFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-                String start = et_end.getText().toString().trim();
-                String end = et_start.getText().toString().trim();
-                et_start.setText(start);
-                et_end.setText(end);
+                 startS = et_end.getText().toString().trim();
+                 endS = et_start.getText().toString().trim();
+                et_start.setText(startS);
+                et_end.setText(startS);
                 Log.i(TAG, "convert");
 
             }
@@ -122,10 +171,10 @@ public class PassFragment extends BaseFragment {
         bt_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String start = et_start.getText().toString().trim();
-                String end = et_end.getText().toString().trim();
-                Log.i(TAG, start + "--" + end + "---" + cityName);
-                selectRoute(start, end, cityName);
+                startS = et_start.getText().toString().trim();
+                endS = et_end.getText().toString().trim();
+                Log.i(TAG, startS + "--" + endS + "---" + cityName);
+                selectRoute(startS, endS, cityName);
 
             }
         });
@@ -139,8 +188,9 @@ public class PassFragment extends BaseFragment {
 
     }
 
+    //显示对话框
     private void showDialog(PassInfo passInfo) {
-        PassRouteDialog dialog = new PassRouteDialog(mActivity,passInfo);
+        PassRouteDialog dialog = new PassRouteDialog(mActivity, passInfo,mDB);
         dialog.show();
     }
 
@@ -158,7 +208,7 @@ public class PassFragment extends BaseFragment {
         PlanNode enNode = PlanNode.withCityNameAndPlaceName(city, end);
         //TransitRoutePlanOption可以进行策略选择
         boolean a = mSearch.transitSearch((new TransitRoutePlanOption())
-                .from(stNode).policy(TransitRoutePlanOption.TransitPolicy.EBUS_WALK_FIRST)
+                .from(stNode).policy(policy)
                 .city(city)
                 .to(enNode));
         Log.i(TAG, String.valueOf(a));
@@ -224,6 +274,8 @@ public class PassFragment extends BaseFragment {
                         info.setPassItemInfoList(itemInfoList);
                         info.setRouteName(routeName.toString());
                         info.setResult(result);
+                        info.setStartStation(startS);
+                        info.setEndStation(endS);
                         passInfoList.add(info);
                     }
 

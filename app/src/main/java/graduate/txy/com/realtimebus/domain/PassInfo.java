@@ -13,8 +13,12 @@ public class PassInfo {
     double totalTime;
     String routeName;
     int totalStationNum;
+    String startStation;
+    String endStation;
     List<PassItemInfo> passItemInfoList;
     TransitRouteResult result;//用于显示路线
+
+
 
     public class PassItemInfo {
         int itemLength;
@@ -65,6 +69,22 @@ public class PassInfo {
         }
     }
 
+
+    public String getEndStation() {
+        return endStation;
+    }
+
+    public void setEndStation(String endStation) {
+        this.endStation = endStation;
+    }
+
+    public String getStartStation() {
+        return startStation;
+    }
+
+    public void setStartStation(String startStation) {
+        this.startStation = startStation;
+    }
 
     public TransitRouteResult getResult() {
         return result;
@@ -117,11 +137,14 @@ public class PassInfo {
     @Override
     public String toString() {
         return "PassInfo{" +
-                "passItemInfoList=" + passItemInfoList.toString() +
+                "endStation='" + endStation + '\'' +
                 ", totalLength=" + totalLength +
                 ", totalTime=" + totalTime +
                 ", routeName='" + routeName + '\'' +
                 ", totalStationNum=" + totalStationNum +
+                ", startStation='" + startStation + '\'' +
+                ", passItemInfoList=" + passItemInfoList +
+                ", result=" + result +
                 '}';
     }
 }
