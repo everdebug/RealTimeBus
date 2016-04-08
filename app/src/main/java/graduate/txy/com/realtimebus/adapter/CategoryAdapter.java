@@ -1,7 +1,5 @@
 package graduate.txy.com.realtimebus.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.domain.Category;
@@ -112,6 +112,7 @@ public class CategoryAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         int itemViewType = getItemViewType(position);
+        //根据ViewType进行不同数据选择和控件属性的填充
         switch (itemViewType) {
             case TYPE_CATEGORY_ITEM:
                 if (null == convertView) {

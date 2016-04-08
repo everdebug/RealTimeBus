@@ -28,11 +28,12 @@ public class SubwayActivity extends Activity {
         tv = (TextView) findViewById(R.id.tv_subway_title);
         tv.setText(getIntent().getStringExtra("name"));
         myiv_map = (MyTouchImageView) findViewById(R.id.iv_subway);
-        //TODO 从config中获取城市，如果城市存在地铁线路图，则进行相关显示，否则显示此城市没有地铁图
+        //获得城市，切换城市地铁图片
         String cityName = SharePreferenceUtils.getSPStringValue(SubwayActivity.this, "city", "北京");
         switchPic(cityName);
     }
 
+    //根据城市进行切换图片
     private void switchPic(String cityName) {
         switch (cityName) {
             case "北京":

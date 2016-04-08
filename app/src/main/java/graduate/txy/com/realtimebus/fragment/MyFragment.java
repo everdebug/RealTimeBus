@@ -27,6 +27,7 @@ import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 /**
  * MyFragment
+ *      一些个性设置
  * Created by lenovo on 2016/3/17.
  */
 public class MyFragment extends BaseFragment {
@@ -77,7 +78,6 @@ public class MyFragment extends BaseFragment {
 
         tv_city_name.setText(SharePreferenceUtils.getSPStringValue(mActivity, "city", "北京"));
         return rootView;
-
     }
 
 
@@ -111,6 +111,7 @@ public class MyFragment extends BaseFragment {
 
     }
 
+    //拿到fragement的Activity
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

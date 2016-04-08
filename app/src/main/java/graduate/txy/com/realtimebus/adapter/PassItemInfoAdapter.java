@@ -1,7 +1,6 @@
 package graduate.txy.com.realtimebus.adapter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,7 +13,7 @@ import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.domain.PassInfo;
 
 /**
- * Dialog中显示步骤的适配器
+ * 换乘Dialog中显示步骤的适配器
  * <p/>
  * Created by lenovo on 2016/4/6.
  */
@@ -53,7 +52,6 @@ public class PassItemInfoAdapter extends BaseAdapter {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag();
         } else {
-            //Log.i(TAG,"创建，调用？");
             viewHolder = new ViewHolder();
             view = View.inflate(mContext, R.layout.item_info_pass, null);
             viewHolder.iv_pass_logo = (ImageView) view.findViewById(R.id.iv_pass_logo);

@@ -7,7 +7,6 @@ import com.baidu.mapapi.SDKInitializer;
 import graduate.txy.com.realtimebus.db.DBManager;
 
 /**
- *
  * 全局Application
  * Created by lenovo on 2016/3/20.
  */
@@ -18,6 +17,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //注册SDK
         SDKInitializer.initialize(this);
         instance = this;
 

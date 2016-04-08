@@ -30,30 +30,27 @@ public class MainActivity extends Activity {
 
 
     /**
-     *
      * 初始化一些数据
      */
     private void init() {
         tv_title = (TextView) findViewById(R.id.tv_title);
         mFManger = getFragmentManager();
         tabs = (RadioGroup) findViewById(R.id.rg_tab);
-
-
         tabs.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //切换fragment
                 FragmentTransaction transaction = mFManger.beginTransaction();
                 mFragment = (BaseFragment) FragmentFactory.getInstanceByIndex(checkedId);
                 tv_title.setText(mFragment.getTitle());
                 transaction.replace(R.id.fl_main, mFragment);
-
                 transaction.commit();
             }
         });
+
+        //默认Tab
         tabs.getChildAt(0).performClick();
     }
-
-
 
 /*
 复用Fragment

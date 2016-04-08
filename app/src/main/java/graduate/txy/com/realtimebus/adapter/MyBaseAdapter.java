@@ -1,11 +1,16 @@
 package graduate.txy.com.realtimebus.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.widget.BaseAdapter;
 
+import java.util.List;
 
+/**
+ * 基础适配器，根据不同的泛型进行不同的匹配，设置基础功能
+ *
+ * @param <T> list中的泛型
+ * @param <Q> View的泛型
+ */
 public abstract class MyBaseAdapter<T,Q> extends BaseAdapter{
 	public Context context;
 	public List<T> list;

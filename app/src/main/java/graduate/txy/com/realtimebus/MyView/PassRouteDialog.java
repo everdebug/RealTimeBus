@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -104,7 +103,10 @@ public class PassRouteDialog extends Dialog {
         super.dismiss();
     }
 
-
+    /**
+     * 得到步行的总长度
+     * @return 步行长度
+     */
     private int getWalkLength() {
         Log.i(TAG, "getWalkLength--S");
         int length = 0;
@@ -118,7 +120,9 @@ public class PassRouteDialog extends Dialog {
         return length;
     }
 
-
+    /**
+     * //TODO 写注释？
+     */
     private class MyTransitRouteOverlay extends TransitRouteOverlay {
 
         public MyTransitRouteOverlay(BaiduMap baiduMap) {
