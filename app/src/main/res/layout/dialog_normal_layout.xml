@@ -6,19 +6,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="3">
+        android:layout_height="220dp"
+        >
         <com.baidu.mapapi.map.MapView
             android:id="@+id/map"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
         </com.baidu.mapapi.map.MapView>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.05">
+        android:layout_height="45dip"
+>
 
         <TextView
             android:id="@+id/tv_dialog_route_name"
@@ -32,10 +32,11 @@
             android:id="@+id/tv_dialog_walk_length"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:text="length"
-            android:textSize="15dip" />
+            android:textSize="15dip"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/tv_dialog_route_name" />
 
 
         <ImageButton
@@ -51,16 +52,15 @@
     <ListView
         android:id="@+id/lv_pass_info"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1.5">
+        android:layout_height="280dp"
+>
 
     </ListView>
 
     <Button
         android:id="@+id/returnBtn"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.08"
+        android:layout_height="45dp"
         android:gravity="center"
         android:text="返回"
         android:textColor="#000"

@@ -23,7 +23,7 @@ public class PassItemInfoAdapter extends BaseAdapter {
     List<PassInfo.PassItemInfo> passItemInfos;
     private Context mContext;
 
-    public PassItemInfoAdapter(Context mContext,List<PassInfo.PassItemInfo> passItemInfos) {
+    public PassItemInfoAdapter(Context mContext, List<PassInfo.PassItemInfo> passItemInfos) {
         this.passItemInfos = passItemInfos;
         this.mContext = mContext;
     }
@@ -61,8 +61,21 @@ public class PassItemInfoAdapter extends BaseAdapter {
             viewHolder.tv_item_station_num = (TextView) view.findViewById(R.id.tv_item_station_num);
             view.setTag(viewHolder);
         }
-
-        viewHolder.iv_pass_logo.setImageResource(R.drawable.bus_logo);
+        int imageId;
+        switch (passItemInfos.get(position).getPassMethod()) {
+            case "BUSLINE":
+                imageId = R.drawable.bus_logo;
+                break;
+            case "SUBWAY":
+                imageId = R.drawable.subway_logo;
+                break;
+            case "WAKLING":
+                imageId = R.drawable.walk_logo;
+                break;
+            default:
+                imageId = R.drawable.icon_logo ;
+        }
+        viewHolder.iv_pass_logo.setImageResource(imageId);
         viewHolder.tv_item_pass_info.setText(passItemInfos.get(position).getPassMethod());
         viewHolder.tv_item_station_num.setText(passItemInfos.get(position).getStationNum() + "站");
         return view;
