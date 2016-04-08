@@ -52,8 +52,8 @@
     <ListView
         android:id="@+id/lv_pass_info"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
->
+        android:layout_height="270dp"
+        >
 
     </ListView>
 

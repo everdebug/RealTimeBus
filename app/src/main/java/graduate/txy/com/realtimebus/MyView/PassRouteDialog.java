@@ -1,5 +1,6 @@
 package graduate.txy.com.realtimebus.MyView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
@@ -48,13 +49,15 @@ public class PassRouteDialog extends Dialog {
     private static final String TAG = "PassRouteDialog";
 
     public PassRouteDialog(Context context, PassInfo passInfo) {
-        super(context);
+        super(context,R.style.MyDialogTheme);
+        //ContextThemeWrapper ctw = new ContextThemeWrapper(context, R.style.Base_Theme_AppCompat_Light_Dialog);
+        //context = ctw;
         this.passInfo = passInfo;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         SDKInitializer.initialize(MyApplication.getInstance());
         setContentView(R.layout.dialog_normal_layout);
+        setCancelable(true);
 
-        ContextThemeWrapper ctw = new ContextThemeWrapper(context, R.style.Base_Theme_AppCompat_Light_Dialog);
 
         //初始化各种Dialog控件
         mMapView = (MapView) findViewById(R.id.map);
@@ -66,15 +69,17 @@ public class PassRouteDialog extends Dialog {
 
         mBaidumap = mMapView.getMap();
         mBaidumap.clear();
+        mMapView.showZoomControls(false);
 
         //显示换乘路线
+        /*
         TransitRouteOverlay overlay = new MyTransitRouteOverlay(mBaidumap);
         mBaidumap.setOnMarkerClickListener(overlay);
         overlay.setData(passInfo.getResult().getRouteLines().get(0));
-
+*/
         Log.i(TAG, passInfo.getRouteName());
         tvRouteName.setText(passInfo.getRouteName());
-        tvWalkLength.setText(getWalkLength() + "");
+        tvWalkLength.setText("步行"+getWalkLength() + " 米");
         lvPass.setAdapter(new PassItemInfoAdapter(context,passInfo.getPassItemInfoList()));
 
         //IB收藏

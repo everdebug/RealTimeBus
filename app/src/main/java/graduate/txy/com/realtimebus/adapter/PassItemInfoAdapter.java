@@ -1,6 +1,7 @@
 package graduate.txy.com.realtimebus.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,6 +19,7 @@ import graduate.txy.com.realtimebus.domain.PassInfo;
  * Created by lenovo on 2016/4/6.
  */
 public class PassItemInfoAdapter extends BaseAdapter {
+public static final String TAG = "PassItemInfoAdapter";
 
     List<PassInfo.PassItemInfo> passItemInfos;
     private Context mContext;
@@ -60,7 +62,8 @@ public class PassItemInfoAdapter extends BaseAdapter {
             view.setTag(viewHolder);
         }
         int imageId;
-        switch (passItemInfos.get(position).getPassMethod()) {
+        Log.i(TAG,passItemInfos.get(position).getTransport());
+        switch (passItemInfos.get(position).getTransport()) {
             case "BUSLINE":
                 imageId = R.drawable.bus_logo;
                 break;

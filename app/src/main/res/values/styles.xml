@@ -18,6 +18,10 @@
         <item name="android:textSize">12sp</item>
         <item name="android:drawablePadding">-10dip</item>
         <item name="android:gravity">center</item>
+    </style>
 
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

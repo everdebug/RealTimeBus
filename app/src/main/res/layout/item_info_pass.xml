@@ -10,7 +10,7 @@
         android:id="@+id/iv_pass_logo"
         android:layout_width="0dip"
         android:layout_weight="1"
-        android:layout_height="match_parent" />
+        android:layout_height="45dp" />
     <TextView
         android:gravity="center"
         android:textSize="15dp"
