@@ -42,6 +42,7 @@
         <activity android:name=".activity.CollectionActivity" />
         <activity android:name=".activity.MapActivity" />
         <activity android:name=".activity.SubwayActivity" />
+        <activity android:name=".activity.WelcomeActivity" />
     </application>
 
 </manifest>
