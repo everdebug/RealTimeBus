@@ -1,6 +1,7 @@
 package graduate.txy.com.realtimebus.utils;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.db.sqlite.Selector;
@@ -18,13 +19,14 @@ import graduate.txy.com.realtimebus.domain.CollectionInfo;
  */
 public class XutilsDataBaseUtils {
 
+    public static final String TAG = "XutilsDataBaseUtils";
 
     public static final String PACKAGE_NAME = "graduate.txy.com.realtimebus";
     public static final String DB_PATH = "/sdcard/Android/data/" + PACKAGE_NAME;
 
     //创建/获取数据库
     public static DbUtils createDB(Activity activity) {
-        DbUtils db = DbUtils.create(activity,DB_PATH, "collection.db");
+        DbUtils db = DbUtils.create(activity, DB_PATH, "collection.db");
         db.getDatabase();
         return db;
     }
@@ -37,6 +39,9 @@ public class XutilsDataBaseUtils {
      */
     public static void addInfo2DB(DbUtils db, CollectionInfo info) {
         try {
+            if (getInfoExist(db, info.getRouteName())) {
+                return;
+            }
             db.save(info);
         } catch (DbException e) {
             e.printStackTrace();
@@ -88,7 +93,12 @@ public class XutilsDataBaseUtils {
      */
     public static void deleteInfo(DbUtils db, String routeName) {
         try {
-            db.deleteById(CollectionInfo.class, WhereBuilder.b("routeName", "=", routeName));
+            Log.i(TAG, routeName + "-->DELETE");
+            //db.deleteById(CollectionInfo.class, WhereBuilder.b("routeName", "=", routeName));
+            CollectionInfo info = null;
+            info = db.findFirst(Selector.from(CollectionInfo.class).where("routeName", "=", routeName));
+            db.delete(info);
+            Log.i(TAG, getInfoExist(db, routeName) + "");
         } catch (DbException e) {
             e.printStackTrace();
         }

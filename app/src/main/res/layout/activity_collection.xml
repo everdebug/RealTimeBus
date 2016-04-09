@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -10,11 +11,17 @@
         android:background="@android:color/black">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="18sp"
-            android:textColor="@android:color/white" />
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:drawableLeft="@drawable/return_key"
+            android:drawablePadding="3dp"
+            android:onClick="returnActivity"
+            android:text="我"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv_collection_title"
@@ -26,10 +33,24 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_my_collection"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="8.5"></ListView>
+        android:layout_weight="8.5">
+
+        <TextView
+            android:id="@+id/tv_show_null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="还没有收藏哦~"
+            android:textSize="30sp" />
+
+        <ListView
+            android:id="@+id/lv_my_collection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"></ListView>
+    </RelativeLayout>
 
 </LinearLayout>

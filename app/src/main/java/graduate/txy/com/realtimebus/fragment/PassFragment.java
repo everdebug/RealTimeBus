@@ -190,7 +190,7 @@ public class PassFragment extends BaseFragment {
 
     //显示对话框
     private void showDialog(PassInfo passInfo) {
-        PassRouteDialog dialog = new PassRouteDialog(mActivity, passInfo,mDB);
+        PassRouteDialog dialog = new PassRouteDialog(mActivity, passInfo,mActivity);
         dialog.show();
     }
 

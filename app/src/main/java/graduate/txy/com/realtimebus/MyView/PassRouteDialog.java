@@ -1,5 +1,6 @@
 package graduate.txy.com.realtimebus.MyView;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.util.Log;
@@ -49,14 +50,15 @@ public class PassRouteDialog extends Dialog {
     boolean useDefaultIcon = false;
     private Context mContext;
     private DbUtils mDB;
-
+    private Activity mActivity;
     private static final String TAG = "PassRouteDialog";
 
-    public PassRouteDialog(Context context, PassInfo passInfo, DbUtils db) {
+    public PassRouteDialog(Context context, PassInfo passInfo,Activity activity) {
         super(context, R.style.MyDialogTheme);
         this.mContext = context;
         this.mPassInfo = passInfo;
-        this.mDB = db;
+        this.mActivity = activity;
+        this.mDB = XutilsDataBaseUtils.createDB(mActivity);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         SDKInitializer.initialize(MyApplication.getInstance());
         setContentView(R.layout.dialog_normal_layout);
@@ -90,7 +92,7 @@ public class PassRouteDialog extends Dialog {
         lvPass.setAdapter(new PassItemInfoAdapter(context, mPassInfo.getPassItemInfoList()));
 
         //判断显示是否已经在数据库中
-        isHaveInDB = XutilsDataBaseUtils.getInfoExist(db, mPassInfo.getRouteName());
+        isHaveInDB = XutilsDataBaseUtils.getInfoExist(mDB, mPassInfo.getRouteName());
         updateStar();
 
 

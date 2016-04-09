@@ -23,6 +23,8 @@ import java.util.List;
  */
 public class TransitRouteOverlay extends OverlayManager {
 
+    private static final String TAG = "TransitRouteOverlay";
+
     private TransitRouteLine mRouteLine = null;
 
     /**
@@ -110,12 +112,16 @@ public class TransitRouteOverlay extends OverlayManager {
     private BitmapDescriptor getIconForStep(TransitRouteLine.TransitStep step) {
         switch (step.getStepType()) {
             case BUSLINE:
+                Log.i(TAG,"BUSLINE");
                 return BitmapDescriptorFactory.fromAssetWithDpi("Icon_bus_station.png");
             case SUBWAY:
+                Log.i(TAG,"SUBWAY");
                 return BitmapDescriptorFactory.fromAssetWithDpi("Icon_subway_station.png");
             case WAKLING:
+                Log.i(TAG,"WAKLING");
                 return BitmapDescriptorFactory.fromAssetWithDpi("Icon_walk_route.png");
             default:
+                Log.i(TAG,"null");
                 return null;
         }
     }
