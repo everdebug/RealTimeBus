@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Window;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.fragment.BaseFragment;
 import graduate.txy.com.realtimebus.fragment.FragmentFactory;

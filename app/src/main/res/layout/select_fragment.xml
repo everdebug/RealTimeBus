@@ -1,10 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<TextView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:text="SELECT"
-    android:textSize="40sp"/>
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="194dp"
+        android:background="@drawable/select_background"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:text="线路:"
+            android:textSize="21sp" />
+
+        <graduate.txy.com.realtimebus.MyView.EditableSpinner
+            android:id="@+id/route_spinner"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:layout_above="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3">
+
+        </graduate.txy.com.realtimebus.MyView.EditableSpinner>
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="方向:"
+            android:textSize="20sp" />
+
+        <graduate.txy.com.realtimebus.MyView.EditableSpinner
+            android:id="@+id/direction_spinner"
+            android:layout_marginLeft="5dp"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_above="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2">
+
+
+        </graduate.txy.com.realtimebus.MyView.EditableSpinner>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="站点:"
+            android:textSize="20sp" />
+
+        <graduate.txy.com.realtimebus.MyView.EditableSpinner
+            android:id="@+id/station_spinner"
+            android:layout_width="200dp"
+            android:layout_marginLeft="5dp"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2">
+
+        </graduate.txy.com.realtimebus.MyView.EditableSpinner>
+
+
+        <Button
+            android:id="@+id/btn_real_time_select"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:text="查询"
+            android:layout_below="@+id/station_spinner"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <ListView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        ></ListView>
 </LinearLayout>

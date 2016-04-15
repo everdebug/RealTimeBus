@@ -9,16 +9,6 @@ import android.app.Fragment;
  */
 public class BaseFragment extends Fragment {
 
-
-//    private Activity activity;
-/*
-    public Context getContexts() {
-        if (activity == null) {
-            return MyApplication.getInstance();
-        }
-        return activity;
-    }
-*/
     public String title;
 
     public String getTitle() {

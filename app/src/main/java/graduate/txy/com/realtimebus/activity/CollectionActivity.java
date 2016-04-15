@@ -1,7 +1,9 @@
 package graduate.txy.com.realtimebus.activity;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +26,12 @@ import graduate.txy.com.realtimebus.utils.XutilsDataBaseUtils;
  * Created by lenovo on 2016/3/20.
  */
 public class CollectionActivity extends Activity {
+    private static final String TAG = "CollectionActivity";
     private TextView tv;
     private ListView lv_my_collection;
     private List<CollectionInfo> infos = null;
     private TextView tv_show_null;
+    private DbUtils mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +41,12 @@ public class CollectionActivity extends Activity {
         tv = (TextView) findViewById(R.id.tv_collection_title);
         tv_show_null = (TextView) findViewById(R.id.tv_show_null);
         tv.setText(getIntent().getStringExtra("name"));
-        DbUtils db = XutilsDataBaseUtils.createDB(this);
+        mDB = XutilsDataBaseUtils.createDB(this);
         lv_my_collection = (ListView) findViewById(R.id.lv_my_collection);
-        infos = XutilsDataBaseUtils.getCollectionInfoList(db);
+        infos = XutilsDataBaseUtils.getCollectionInfoList(mDB);
+        //TODO 问题判断表书否存在，以及是否有数据
         if (infos.size() > 0) {
+            Log.i(TAG,infos.size()+"");
             lv_my_collection.setVisibility(View.VISIBLE);
             tv_show_null.setVisibility(View.INVISIBLE);
         } else {
@@ -48,6 +54,12 @@ public class CollectionActivity extends Activity {
         }
         lv_my_collection.setAdapter(new CollectionAdapter(infos));
 
+    }
+
+    //TODO Bug-->数据库创建，但是表如果没有-->引起程序crash
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
     }
 
     /**
@@ -112,7 +124,7 @@ public class CollectionActivity extends Activity {
                 viewHolder.tv_collection_city = (TextView) view.findViewById(R.id.tv_collection_city);
                 view.setTag(viewHolder);
             }
-            viewHolder.tv_collection_addr.setText(infos.get(position).getStartStation()+"——>"+infos.get(position).getEndStation());
+            viewHolder.tv_collection_addr.setText(infos.get(position).getStartStation() + "——>" + infos.get(position).getEndStation());
             viewHolder.tv_collection_name.setText(infos.get(position).getRouteName());
             viewHolder.tv_collection_city.setText(infos.get(position).getCity());
 
