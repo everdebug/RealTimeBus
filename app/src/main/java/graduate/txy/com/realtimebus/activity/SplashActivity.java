@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
@@ -20,7 +21,9 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
 import graduate.txy.com.realtimebus.R;
+import graduate.txy.com.realtimebus.globalApp.MyApplication;
 import graduate.txy.com.realtimebus.utils.CheckUtils;
+import graduate.txy.com.realtimebus.utils.DBUtils;
 import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 
 
@@ -32,7 +35,6 @@ import graduate.txy.com.realtimebus.utils.SharePreferenceUtils;
 public class SplashActivity extends Activity {
 
     private static final String TAG = "SplashActivity";
-
     //check类型
     private static final int NEXT_ACTIVITY = 0;
     private static final int NO_NET = 1;
@@ -110,6 +112,15 @@ public class SplashActivity extends Activity {
 
         Log.i(TAG, "init_finish");
 
+        loadDB();
+    }
+
+    /**
+     *
+     * 加载数据库
+     */
+    private void loadDB() {
+        DBUtils.CopyDB(MyApplication.getInstance(),"busdb.db");
     }
 
     /**

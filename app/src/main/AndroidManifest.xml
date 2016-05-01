@@ -43,6 +43,7 @@
         <activity android:name=".activity.MapActivity" />
         <activity android:name=".activity.SubwayActivity" />
         <activity android:name=".activity.WelcomeActivity" />
+        <activity android:name=".activity.ServerActivity"></activity>
     </application>
 
 </manifest>

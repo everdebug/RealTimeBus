@@ -16,14 +16,17 @@ import java.io.InputStream;
  */
 public class DBUtils {
 public  static final String TAG = "DBUtils";
+
     /**
      * 加载数据库
      *
      * @param path
      */
-    public void CopyDB(Context context,String path) {
+    public static void CopyDB(Context context,String path) {
         try { // 创建文件
-            File file = new File(context.getFilesDir(), path);
+            File file = new File("/sdcard/Android/data/graduate.txy.com.realtimebus/files/"+path);
+            Log.i(TAG,"length"+file.length());
+            Log.i(TAG,"path"+file.getPath());
             if (file.exists() && file.length() > 0) {
                 Log.i(TAG, "数据库已经加载");
             } else {

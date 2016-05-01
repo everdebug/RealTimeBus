@@ -20,7 +20,6 @@ import graduate.txy.com.realtimebus.domain.CollectionInfo;
 public class XutilsDataBaseUtils {
 
     public static final String TAG = "XutilsDataBaseUtils";
-
     public static final String PACKAGE_NAME = "graduate.txy.com.realtimebus";
     public static final String DB_PATH = "/sdcard/Android/data/" + PACKAGE_NAME;
 

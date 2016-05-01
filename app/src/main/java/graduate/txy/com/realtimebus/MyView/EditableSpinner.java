@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -68,5 +69,13 @@ public class EditableSpinner extends RelativeLayout {
 		editText.setSingleLine(true);
 		editText.setBackgroundColor(Color.parseColor("#00000000"));
 		addView(editText, editTextParams);
+	}
+
+	public EditText getEditText(){
+		return editText;
+	}
+
+	public ImageButton getImageButton(){
+		return imageButton;
 	}
 }

@@ -19,6 +19,7 @@ import graduate.txy.com.realtimebus.activity.AboutActivity;
 import graduate.txy.com.realtimebus.activity.CityActivty;
 import graduate.txy.com.realtimebus.activity.CollectionActivity;
 import graduate.txy.com.realtimebus.activity.MapActivity;
+import graduate.txy.com.realtimebus.activity.ServerActivity;
 import graduate.txy.com.realtimebus.activity.SubwayActivity;
 import graduate.txy.com.realtimebus.adapter.CategoryAdapter;
 import graduate.txy.com.realtimebus.domain.Category;
@@ -60,7 +61,9 @@ public class MyFragment extends BaseFragment {
         ib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 设置按钮
+                //TODO 跳转到发送数据里面 ServerActivity
+                startActivity(new Intent(MyApplication.getInstance(), ServerActivity.class));
+                mActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 Log.i(TAG, "点击设置按钮");
             }
         });

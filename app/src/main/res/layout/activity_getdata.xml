@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:text="longitude" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv1"
+        android:layout_marginStart="72dp"
+        android:layout_toEndOf="@+id/tv1"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv1"
+        android:layout_below="@+id/tv1"
+        android:layout_marginTop="30dp"
+        android:text="latitude" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv2"
+        android:layout_alignTop="@+id/tv3"
+        android:text="0" />
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv3"
+        android:layout_below="@+id/tv3"
+        android:layout_marginTop="33dp"
+        android:text="路线" />
+
+    <EditText
+        android:id="@+id/tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv4"
+        android:layout_alignTop="@+id/tv5"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv5"
+        android:layout_below="@+id/tv5"
+        android:layout_marginTop="32dp"
+        android:text="公交车牌号" />
+
+    <EditText
+        android:id="@+id/tv8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv6"
+        android:layout_alignTop="@+id/tv7"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv7"
+        android:layout_below="@+id/tv7"
+        android:layout_marginTop="28dp"
+        android:text="距离" />
+
+    <EditText
+        android:id="@+id/tv10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv8"
+        android:layout_alignTop="@+id/tv9"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv9"
+        android:layout_below="@+id/tv9"
+        android:layout_marginTop="28dp"
+        android:text="方向" />
+
+    <EditText
+        android:id="@+id/tv12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv10"
+        android:layout_alignTop="@+id/tv11"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv11"
+        android:layout_below="@+id/tv11"
+        android:layout_marginTop="28dp"
+        android:text="时间" />
+
+    <EditText
+        android:id="@+id/tv14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv12"
+        android:layout_alignTop="@+id/tv13"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv13"
+        android:layout_below="@+id/tv13"
+        android:layout_marginTop="28dp"
+        android:text="下一站" />
+
+    <EditText
+        android:id="@+id/tv16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv14"
+        android:layout_alignTop="@+id/tv15"
+        android:text="Hello World!" />
+
+    <TextView
+        android:id="@+id/tv17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv15"
+        android:layout_below="@+id/tv15"
+        android:layout_marginTop="28dp"
+        android:text="上一站" />
+
+    <EditText
+        android:id="@+id/tv18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv16"
+        android:layout_alignTop="@+id/tv17"
+        android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/ll_btn"
+        android:onClick="getLL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取经纬度"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:onClick="savedb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="存入DB"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:onClick="upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上传到Server"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>
