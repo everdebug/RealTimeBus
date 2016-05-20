@@ -5,12 +5,11 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:layout_width="300dp"
         android:layout_height="194dp"
-        android:background="@drawable/select_background"
-        >
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/select_background">
 
         <TextView
             android:id="@+id/textView"
@@ -26,8 +25,8 @@
             android:id="@+id/route_spinner"
             android:layout_width="200dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="5dp"
             android:layout_above="@+id/textView3"
+            android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/textView3">
 
         </graduate.txy.com.realtimebus.MyView.EditableSpinner>
@@ -45,10 +44,10 @@
 
         <graduate.txy.com.realtimebus.MyView.EditableSpinner
             android:id="@+id/direction_spinner"
-            android:layout_marginLeft="5dp"
             android:layout_width="200dp"
             android:layout_height="25dp"
             android:layout_above="@+id/textView2"
+            android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/textView2">
 
 
@@ -67,9 +66,9 @@
         <graduate.txy.com.realtimebus.MyView.EditableSpinner
             android:id="@+id/station_spinner"
             android:layout_width="200dp"
-            android:layout_marginLeft="5dp"
             android:layout_height="25dp"
             android:layout_alignBottom="@+id/textView2"
+            android:layout_marginLeft="5dp"
             android:layout_toEndOf="@+id/textView2">
 
         </graduate.txy.com.realtimebus.MyView.EditableSpinner>
@@ -79,15 +78,38 @@
             android:id="@+id/btn_real_time_select"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:text="查询"
             android:layout_below="@+id/station_spinner"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_centerHorizontal="true" />
+            android:text="查询" />
     </RelativeLayout>
 
     <ListView
-        android:layout_marginTop="5dp"
+        android:layout_margin="15dp"
+        android:id="@+id/lv_buslist"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        ></ListView>
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/mBtn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始实时监听数据"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/mBtn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="停止"
+            android:visibility="invisible" />
+
+    </LinearLayout>
 </LinearLayout>

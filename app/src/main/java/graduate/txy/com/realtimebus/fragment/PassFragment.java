@@ -162,7 +162,7 @@ public class PassFragment extends BaseFragment {
                  startS = et_end.getText().toString().trim();
                  endS = et_start.getText().toString().trim();
                 et_start.setText(startS);
-                et_end.setText(startS);
+                et_end.setText(endS);
                 Log.i(TAG, "convert");
 
             }
@@ -234,14 +234,14 @@ public class PassFragment extends BaseFragment {
                 if (result.error == SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR) {
                     //TODO 智能提醒位置
                     // 起终点或途经点地址有岐义，通过以下接口获取建议查询信息
-                    com.baidu.mapapi.search.route.SuggestAddrInfo si = result.getSuggestAddrInfo();
+                    Toast.makeText(MyApplication.getInstance(), "抱歉，起终点或途经点地址有岐义，请重新输入", Toast.LENGTH_SHORT).show();
+                   // com.baidu.mapapi.search.route.SuggestAddrInfo si = result.getSuggestAddrInfo();
                     Log.i(TAG, "SearchResult.ERRORNO.AMBIGUOUS_ROURE_ADDR");
                     return;
                 }
                 if (result.error == SearchResult.ERRORNO.NO_ERROR) {
                     TaxiInfo ti = result.getTaxiInfo();
                     PassInfo info;
-
                     Log.i(TAG, ti.getDesc() + "描述" + ti.getTotalPrice() + "总价格");
                     for (TransitRouteLine tr : transitRouteLineList) {//排序查询条件
                         info = new PassInfo();
@@ -261,14 +261,11 @@ public class PassFragment extends BaseFragment {
                                 routeName.append(vi.getTitle());
                                 routeName.append("|");
                             }
-                            //Log.i(TAG,""+ts.getDistance());
                             itemInfo.setItemLength(ts.getDistance());
                             itemInfo.setPassMethod(ts.getInstructions());
                             itemInfo.setTransport((ts.getStepType()).toString());
                             itemInfoList.add(itemInfo);
                         }
-
-
                         routeName.deleteCharAt(routeName.length() - 1);
                         info.setTotalStationNum(num);
                         info.setPassItemInfoList(itemInfoList);

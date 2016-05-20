@@ -24,7 +24,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tv_about_title"
+            android:id="@+id/tv_map_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -33,28 +33,12 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_my_about"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="4.5"></ListView>
+        android:layout_weight="8.5"
+        android:gravity="center"
+        android:text="有关xxx的公告：\n\n\n\n\n 实时公交小助手发布啦！~"
+        android:textSize="20sp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="4">
-        <ImageView
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_logo"
-            android:id="@+id/imageView" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="         RealTimeBus V1.0\n               作者：田孝宇\nCopyright © 2016 tianxy.com\n         All Right Reserved."
-            android:textSize="20sp"
-            android:layout_below="@+id/imageView"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
 </LinearLayout>

@@ -18,7 +18,6 @@ import graduate.txy.com.realtimebus.R;
 import graduate.txy.com.realtimebus.activity.AboutActivity;
 import graduate.txy.com.realtimebus.activity.CityActivty;
 import graduate.txy.com.realtimebus.activity.CollectionActivity;
-import graduate.txy.com.realtimebus.activity.MapActivity;
 import graduate.txy.com.realtimebus.activity.ServerActivity;
 import graduate.txy.com.realtimebus.activity.SubwayActivity;
 import graduate.txy.com.realtimebus.adapter.CategoryAdapter;
@@ -129,7 +128,6 @@ public class MyFragment extends BaseFragment {
         c1.addItems(c1.new CategoryItem("收藏线路", R.drawable.collection, CollectionActivity.class));
         c1.addItems(c1.new CategoryItem("城市切换", R.drawable.city, CityActivty.class));
         Category c2 = new Category("");
-        c2.addItems(c2.new CategoryItem("离线地图", R.drawable.map, MapActivity.class));
         c2.addItems(c2.new CategoryItem("地铁线路图", R.drawable.subway, SubwayActivity.class));
         Category c3 = new Category("");
         c3.addItems(c3.new CategoryItem("关于RTB", R.drawable.about, AboutActivity.class));

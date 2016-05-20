@@ -73,8 +73,8 @@ public class AboutActivity extends Activity {
         Category c1 = new Category("");
         //TODO 更换Activity
         c1.addItems(c1.new CategoryItem("欢迎界面", R.drawable.welcome, WelcomeActivity.class));
-        c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, WelcomeActivity.class));
-        c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, WelcomeActivity.class));
+        c1.addItems(c1.new CategoryItem("最新公告", R.drawable.notice, NoticeActivity.class));
+        c1.addItems(c1.new CategoryItem("投诉建议", R.drawable.suggest, FeedbackActivity.class));
         cs.add(c1);
         return cs;
     }

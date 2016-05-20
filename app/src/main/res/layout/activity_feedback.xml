@@ -33,9 +33,25 @@
             android:textSize="20sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/lv_my_map"
+    <EditText
+        android:id="@+id/et_feedback"
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="8.5"></ListView>
+        android:layout_weight="6.5"
+        android:background="@android:drawable/edit_text"
+        android:enabled="true"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="10"
+        android:minLines="8"
+        android:scrollbars="vertical"></EditText>
+
+    <Button
+        android:onClick="postFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="确定" />
 </LinearLayout>

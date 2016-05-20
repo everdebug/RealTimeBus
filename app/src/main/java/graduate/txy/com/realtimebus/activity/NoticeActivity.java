@@ -12,13 +12,13 @@ import graduate.txy.com.realtimebus.R;
 /**
  * Created by lenovo on 2016/3/20.
  */
-public class MapActivity extends Activity {
+public class NoticeActivity extends Activity {
     private TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//无title
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_notice);
 
         tv = (TextView)findViewById(R.id.tv_map_title);
         tv.setText(getIntent().getStringExtra("name"));
